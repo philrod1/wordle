@@ -36,13 +36,13 @@ def main():
     # matches = [s for s in matches if pattern.match(s)]
     # print(matches)
     matches = words_list
-    matches = get_matches('crane', [0,0,0,1,1], matches)
-    matches = get_matches('spoil', [0,0,1,0,0], matches)
-    matches = get_matches('thumb', [0,0,0,0,0], matches)
-    matches = get_matches('frail', [0,0,0,0,0], matches)
-    matches = get_matches('poppy', [0,2,0,0,0], matches)
-    matches = get_matches('swift', [0,0,0,0,0], matches)
-    matches = get_matches('stiff', [0,0,0,0,0], matches)
+    matches = get_matches('crane', '00010', matches)
+    matches = get_matches('spoil', '00010', matches)
+    matches = get_matches('thumb', '00000', matches)
+    matches = get_matches('stomp', '00000', matches)
+    matches = get_matches('blurt', '00000', matches)
+    matches = get_matches('admit', '01010', matches)
+    # matches = get_matches('booth', '00000', matches)
 
 
     # regex = result_to_regex('linen', [0,0,2,0,0])
@@ -108,7 +108,7 @@ for i in [0,1,2,3,4,5]:
 """
 
 def get_matches(word: str, values: list, words: list):
-    regex = result_to_regex(word, values)
+    regex = result_to_regex(word, [int(d) for d in values])
     pattern = re.compile(regex)
     matches = [s for s in words if pattern.match(s)]
     print(matches)
